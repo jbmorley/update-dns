@@ -1,8 +1,14 @@
 #!/usr/bin/env python3
 
 import argparse
+import logging
+import sys
 
 import requests
+
+
+verbose = '--verbose' in sys.argv[1:] or '-v' in sys.argv[1:]
+logging.basicConfig(level=logging.DEBUG if verbose else logging.INFO, format="[%(levelname)s] %(message)s")
 
 
 class Cloudflare(object):
@@ -59,13 +65,19 @@ def main():
     parser.add_argument("email", type=str, help="email address")
     parser.add_argument("auth", help="authorization key")
     parser.add_argument("record", type=str, help="record to update")
+    parser.add_argument('--verbose', '-v', action='store_true', default=False, help="show verbose output")
     options = parser.parse_args()
+    logging.info("Getting external IP address...")
+    address = get_address()
+    logging.info(address)
     (_, zone) = options.record.split(".", 1)
+    logging.info(f"Updating {options.record}")
     update_address(email=options.email,
                    auth=options.auth,
                    zone=zone,
                    record=options.record,
-                   address=get_address())
+                   address=address)
+    logging.info("Success!")
 
 
 if __name__ == "__main__":
