@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e
+
+directory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+name=`basename $0`
+cd "${directory}"
+pipenv run python3 -u "$name.py" $@
