@@ -6,7 +6,7 @@ Cloudflare dynamic DNS updater
 
 Install the Python dependencies using `pipenv` from the root directory:
 
-```
+```bash
 pipenv install
 ```
 
