@@ -4,6 +4,12 @@ Cloudflare dynamic DNS updater
 
 ## Usage
 
+Install `pipenv`:
+
+```bash
+sudo apt install pipenv
+```
+
 Install the Python dependencies using `pipenv` from the root directory:
 
 ```bash
