@@ -4,6 +4,12 @@ Cloudflare dynamic DNS updater
 
 ## Usage
 
+Install the Python dependencies using `pipenv` from the root directory:
+
+```
+pipenv install
+```
+
 Scheule regular updates by adding the following to your crontab file:
 
 ```
